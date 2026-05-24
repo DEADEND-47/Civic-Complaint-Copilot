@@ -1,116 +1,348 @@
 # Civic Complaint Copilot
 
-**Civic Complaint Copilot** is a high-impact, AI-powered platform designed to transform citizen-led observations (photos and text descriptions) into professional, municipal-grade grievances. By bridging the gap between casual observation and administrative requirements, it empowers residents to report infrastructure and public issues effectively.
+AI-assisted civic grievance generation platform built to convert informal citizen reports into structured, municipality-ready complaints.
+
+Users can upload an image or describe a civic issue, and the system analyzes the problem, identifies the relevant authority, generates a professional complaint, and exports it as a formal PDF.
 
 ---
 
-## Features
+## Overview
 
-- **AI-Powered Issue Classification**: Automatically detects issue types (e.g., potholes, sanitation, lighting) and assesses severity using an intelligent AI pipeline.
-- **Precision Geocoding**: Integrated GPS detection with reverse geocoding to provide human-readable addresses for formal reporting.
-- **Departmental Mapping**: Intelligently routes grievances to the relevant municipal departments.
-- **Formal Grievance Generation**: Transforms raw input into professional, polite, yet firm grievance letters.
-- **Official PDF Export**: Allows users to download a physical copy of their complaint for official filing or personal records.
-- **Integrated Tracking Dashboard**: A local-first dashboard to view, manage, and track the status of past complaints.
-- **Multi-Language Support**: Accessible to a diverse population with built-in localization features.
+Most citizens notice civic issues but never formally report them because the reporting process is fragmented, unclear, or bureaucratic.
 
----
+Civic Complaint Copilot simplifies this workflow by combining:
 
-## Tech Stack
+* AI-powered issue analysis
+* Automatic complaint drafting
+* Location intelligence
+* Department mapping
+* PDF complaint generation
+* Complaint history tracking
 
-- **Core**: [Next.js 15+](https://nextjs.org/) (App Router), React 19, TypeScript
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/) (Aesthetics and Animations)
-- **Utilities**: 
-  - [jsPDF](https://github.com/parallax/jsPDF) for professional document generation
-  - Browser Geolocation API for precise coordinate tracking
-- **Deployment**: [Vercel](https://vercel.com/) (Optimized for Next.js)
+The goal is to reduce friction between public observation and official action.
 
 ---
 
-## Installation & Setup
+## Core Features
 
-Ensure you have [Node.js](https://nodejs.org/) (version 18.x or later) installed.
+### AI-Based Issue Analysis
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/civic-complaint-copilot.git
-   cd civic-complaint-copilot
-   ```
+The platform analyzes uploaded images and text descriptions to:
 
-2. **Install Dependencies**
-   ```bash
-   npm install
-   ```
+* Detect issue categories
+* Estimate severity
+* Understand context
+* Generate structured metadata
 
-3. **Configure Environment Variables**
-   Create a `.env.local` file in the root directory and add your AI service credentials (if applicable).
-   ```env
-   NEXT_PUBLIC_AI_API_KEY=your_key_here
-   ```
+Supported categories include:
 
-4. **Run the Development Server**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+* Potholes
+* Garbage accumulation
+* Broken street lights
+* Water leakage
+* Drainage issues
+* Public sanitation problems
+* Road damage
+* Illegal dumping
 
 ---
 
-## Usage
+### Smart Complaint Generation
 
-1. **Upload or Capture**: Provide a photo or a text description of the civic issue.
-2. **Auto-Detect Location**: Use the geolocation feature to automatically pin the issue's address.
-3. **AI Analysis**: Let the "Copilot" analyze the issue, identify the relevant authority, and draft the complaint.
-4. **Download/File**: Review the formal letter, export it as a PDF, or track it in your personal dashboard.
+Transforms raw user input into:
+
+* Formal municipal complaints
+* Professionally worded grievance letters
+* Structured reports suitable for authorities
+* Citizen-friendly documentation
+
+Generated complaints maintain:
+
+* Clear issue description
+* Location references
+* Severity indicators
+* Respectful but assertive tone
 
 ---
 
-## Project Structure
+### Automatic Geolocation
+
+Uses browser geolocation APIs to:
+
+* Detect user coordinates
+* Reverse geocode location
+* Generate readable addresses
+* Attach accurate issue location data
+
+---
+
+### Department Mapping
+
+Maps detected issues to appropriate departments automatically.
+
+Example:
+
+| Issue Type    | Target Department        |
+| ------------- | ------------------------ |
+| Potholes      | Public Works Department  |
+| Garbage       | Sanitation Department    |
+| Street Lights | Electrical Department    |
+| Drainage      | Water & Sewer Department |
+
+---
+
+### PDF Complaint Export
+
+Generate printable complaint documents with:
+
+* Official formatting
+* Structured layout
+* Timestamped issue data
+* Citizen complaint summary
+
+Useful for:
+
+* Email submissions
+* Government portals
+* Physical filing
+* Personal record keeping
+
+---
+
+### Complaint Dashboard
+
+Local-first complaint management dashboard for:
+
+* Viewing past complaints
+* Tracking complaint history
+* Monitoring issue status
+* Managing generated reports
+
+---
+
+### Multi-Language Accessibility
+
+Designed to support broader civic participation through localization and multilingual workflows.
+
+---
+
+# Tech Stack
+
+## Frontend
+
+* Next.js 15 (App Router)
+* React 19
+* TypeScript
+* Tailwind CSS
+* Framer Motion
+
+## Utilities & APIs
+
+* jsPDF
+* Browser Geolocation API
+* Reverse Geocoding APIs
+
+## Deployment
+
+* Vercel
+
+---
+
+# Project Architecture
 
 ```text
 src/
-├── app/          # Next.js App Router (pages, layouts, API routes)
-├── components/   # Modular UI components (Navigation, Forms, UI Elements)
-├── config/       # Global constants (Authority maps, department settings)
-├── contexts/     # Application-wide state (Authentication, Localization)
-├── data/         # Static data assets (Issue types, analysis constants)
-├── hooks/        # Custom React hooks (useGeolocation, useComplaints)
-├── lib/          # Business logic and utilities (PDF generators, helpers)
-└── styles/       # Global CSS and Tailwind configuration
+├── app/
+│   ├── pages
+│   ├── layouts
+│   └── API routes
+│
+├── components/
+│   ├── UI components
+│   ├── Forms
+│   ├── Dashboard
+│   └── Navigation
+│
+├── config/
+│   ├── Department mappings
+│   └── Global constants
+│
+├── contexts/
+│   ├── Localization
+│   └── App state
+│
+├── data/
+│   └── Civic issue datasets
+│
+├── hooks/
+│   ├── useGeolocation
+│   └── useComplaints
+│
+├── lib/
+│   ├── PDF generation
+│   ├── AI helpers
+│   └── Utility functions
+│
+└── styles/
+    └── Global styles
 ```
 
 ---
 
-## Screenshots / Demo
+# Usage Flow
 
-*Coming Soon: A visual walkthrough of the 'Home', 'Result', and 'Dashboard' screens.*
+## Step 1 — Upload or Describe Issue
 
----
+Users can:
 
-## Future Improvements
-
-- [ ] Real-time integration with municipal grievance APIs.
-- [ ] Push notifications for status updates on filed complaints.
-- [ ] Community verification system to upvote/validate existing issues.
-- [ ] Expansion of departmental mapping to include regional and state-level authorities.
+* Upload an image
+* Enter issue description
+* Provide additional details
 
 ---
 
-## Contributing
+## Step 2 — Detect Location
 
-Contributions are welcome! Please follow these steps:
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+The system:
 
----
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* Fetches user coordinates
+* Converts them into readable addresses
+* Attaches issue metadata
 
 ---
 
-*Transforming complaints into action with Civic Complaint Copilot.*
+## Step 3 — AI Processing
+
+The platform:
+
+* Analyzes the issue
+* Determines severity
+* Maps responsible department
+* Drafts official complaint
+
+---
+
+## Step 4 — Export & Track
+
+Users can:
+
+* Download complaint PDF
+* Save complaint locally
+* Track complaint history
+
+---
+
+# Problem Statement
+
+Citizens often face three major challenges while reporting civic problems:
+
+1. Lack of clarity about responsible authorities
+2. Difficulty writing formal complaints
+3. No centralized personal tracking mechanism
+
+Civic Complaint Copilot attempts to bridge this gap using AI-assisted automation.
+
+---
+
+# Potential Real-World Use Cases
+
+* Smart city initiatives
+* Municipal digital grievance systems
+* Public infrastructure monitoring
+* Community issue reporting
+* NGO civic engagement tools
+* Campus infrastructure reporting systems
+
+---
+
+# Future Roadmap
+
+* [ ] Municipal API integration
+* [ ] Real-time complaint tracking
+* [ ] SMS / Email notifications
+* [ ] Community issue validation
+* [ ] AI severity heatmaps
+* [ ] Public issue clustering
+* [ ] Regional authority datasets
+* [ ] Mobile application support
+
+---
+
+# Screenshots
+
+## Suggested Additions
+
+Add screenshots for:
+
+* Landing page
+* Complaint form
+* AI analysis screen
+* Generated complaint
+* Dashboard
+* PDF preview
+
+Example:
+
+```md
+![Home Screen](./public/screenshots/home.png)
+```
+
+---
+
+# Why This Project Stands Out
+
+Unlike traditional complaint portals, Civic Complaint Copilot focuses on:
+
+* Accessibility
+* Complaint quality
+* Automation
+* Citizen usability
+* Faster grievance preparation
+* AI-assisted civic participation
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+## Contribution Workflow
+
+```bash
+# Fork repository
+
+# Create feature branch
+git checkout -b feature/feature-name
+
+# Commit changes
+git commit -m "Add feature"
+
+# Push branch
+git push origin feature/feature-name
+```
+
+Then open a Pull Request.
+
+---
+
+# License
+
+Distributed under the MIT License.
+
+See `LICENSE` for more information.
+
+---
+
+# Author
+
+Developed by team MoutainDew.
+
+---
+
+# Repository
+
+[Civic Complaint Copilot Repository](https://github.com/DEADEND-47/Civic-Complaint-Copilot)
+
+---
+
+> Turning civic observations into actionable complaints
